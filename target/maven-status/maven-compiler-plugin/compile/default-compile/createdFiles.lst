@@ -1,2 +1,4 @@
-com\mycompany\javagame\MainGame.class
-com\mycompany\javagame\MainGame$1.class
+Views\Login$1.class
+Views\Login.class
+javagame\Main.class
+Controller\Controller.class
