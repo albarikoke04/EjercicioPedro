@@ -1,0 +1,14 @@
+
+// src/resources/org/netbeans/validation/api/builtin/stringvalidation
+// la ruta tiene que ser la misma que la que se ha especificado al instalarlo en el POM.
+// para cambiar el idioma con un selector, volver a utilizar el selector default de locale
+// y usar ResourceBundle.clearCache()
+
+
+
+TAREAS PROGRAMA
+
+-> Validaciones LOGIN: ValidacionAPI, Jakarta Validation con bundles por idioma e interactivo. -> Alejandro
+-> Ventanas: Login, historial puntuaciones, juego... -> Alba
+-> Lógica del juego -> Isma
+-> BBDD -> Alejandro 
