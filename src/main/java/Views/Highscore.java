@@ -31,15 +31,15 @@ public class Highscore extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Tabla_highscore = new javax.swing.JTable();
+        Buscar_usuario = new javax.swing.JButton();
+        Atrás = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setBackground(new java.awt.Color(255, 153, 153));
-        jTable1.setForeground(new java.awt.Color(255, 153, 153));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_highscore.setBackground(new java.awt.Color(255, 153, 153));
+        Tabla_highscore.setForeground(new java.awt.Color(255, 153, 153));
+        Tabla_highscore.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,17 +58,17 @@ public class Highscore extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        jTable1.setSelectionBackground(new java.awt.Color(255, 0, 255));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 0, 102));
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getAccessibleContext().setAccessibleName("Tabla_highscore");
+        Tabla_highscore.setSelectionBackground(new java.awt.Color(255, 0, 255));
+        Tabla_highscore.setSelectionForeground(new java.awt.Color(255, 0, 102));
+        jScrollPane1.setViewportView(Tabla_highscore);
+        Tabla_highscore.getAccessibleContext().setAccessibleName("Tabla_highscore");
 
-        jButton1.setText("Buscar");
+        Buscar_usuario.setText("Buscar");
 
-        jButton2.setText("Atrás");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Atrás.setText("Atrás");
+        Atrás.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AtrásActionPerformed(evt);
             }
         });
 
@@ -80,9 +80,9 @@ public class Highscore extends javax.swing.JDialog {
                 .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(Atrás)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(Buscar_usuario))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
@@ -93,12 +93,12 @@ public class Highscore extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Buscar_usuario)
+                    .addComponent(Atrás))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jButton1.getAccessibleContext().setAccessibleName("Buscar_usuario");
+        Buscar_usuario.getAccessibleContext().setAccessibleName("Buscar_usuario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,9 +114,9 @@ public class Highscore extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AtrásActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,10 +161,10 @@ public class Highscore extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Atrás;
+    private javax.swing.JButton Buscar_usuario;
+    private javax.swing.JTable Tabla_highscore;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,84 +28,87 @@ public class Borrar_Usuario extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Borrar_NombreUser = new javax.swing.JTextField();
+        Contraseña_borrarUsuario = new javax.swing.JPasswordField();
+        Confirmar_contraseña = new javax.swing.JPasswordField();
+        Acceptar_Borrar = new javax.swing.JButton();
+        Cancelar_Borrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTextField1.setText("Nombre Usuario");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Borrar_NombreUser.setText("Nombre Usuario");
+        Borrar_NombreUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                Borrar_NombreUserActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setText("Contraseña");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        Contraseña_borrarUsuario.setText("Contraseña");
+        Contraseña_borrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                Contraseña_borrarUsuarioActionPerformed(evt);
             }
         });
 
-        jPasswordField2.setText("Confirmar Contraseña");
+        Confirmar_contraseña.setText("Confirmar Contraseña");
 
-        jButton1.setText("Acceptar");
+        Acceptar_Borrar.setText("Acceptar");
 
-        jButton2.setText("Cancelar");
+        Cancelar_Borrar.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jPasswordField2)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField1))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Contraseña_borrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addComponent(Cancelar_Borrar))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addComponent(Borrar_NombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Acceptar_Borrar)
+                        .addComponent(Confirmar_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(Borrar_NombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Contraseña_borrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(Confirmar_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(139, Short.MAX_VALUE))
+                    .addComponent(Cancelar_Borrar)
+                    .addComponent(Acceptar_Borrar))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        jTextField1.getAccessibleContext().setAccessibleName("Nombre_Usuario");
-        jTextField1.getAccessibleContext().setAccessibleDescription("");
-        jPasswordField1.getAccessibleContext().setAccessibleName("Contraseña_borrarUsuario");
-        jPasswordField2.getAccessibleContext().setAccessibleName("Confirmar_contraseña");
-        jButton1.getAccessibleContext().setAccessibleName("Acceptar_Borrar");
-        jButton2.getAccessibleContext().setAccessibleName("Cancelar_Borrar");
+        Borrar_NombreUser.getAccessibleContext().setAccessibleName("Nombre_Usuario");
+        Borrar_NombreUser.getAccessibleContext().setAccessibleDescription("");
+        Contraseña_borrarUsuario.getAccessibleContext().setAccessibleName("Contraseña_borrarUsuario");
+        Confirmar_contraseña.getAccessibleContext().setAccessibleName("Confirmar_contraseña");
+        Acceptar_Borrar.getAccessibleContext().setAccessibleName("Acceptar_Borrar");
+        Cancelar_Borrar.getAccessibleContext().setAccessibleName("Cancelar_Borrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -113,13 +116,13 @@ public class Borrar_Usuario extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Borrar_NombreUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_NombreUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Borrar_NombreUserActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void Contraseña_borrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_borrarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_Contraseña_borrarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,11 +167,11 @@ public class Borrar_Usuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Acceptar_Borrar;
+    private javax.swing.JTextField Borrar_NombreUser;
+    private javax.swing.JButton Cancelar_Borrar;
+    private javax.swing.JPasswordField Confirmar_contraseña;
+    private javax.swing.JPasswordField Contraseña_borrarUsuario;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

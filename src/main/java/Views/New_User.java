@@ -28,46 +28,46 @@ public class New_User extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Nombre_newUser = new javax.swing.JTextField();
+        Correo_newUser = new javax.swing.JTextField();
+        Contraseña_newUser = new javax.swing.JPasswordField();
+        Acceptar_newUser = new javax.swing.JButton();
+        Cancelar_newUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTextField1.setText("Nombre");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Nombre_newUser.setText("Nombre");
+        Nombre_newUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                Nombre_newUserActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("Correo");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Correo_newUser.setText("Correo");
+        Correo_newUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                Correo_newUserActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setText("Contraseña");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        Contraseña_newUser.setText("Contraseña");
+        Contraseña_newUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                Contraseña_newUserActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Acceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Acceptar_newUser.setText("Acceptar");
+        Acceptar_newUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                Acceptar_newUserActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Cancelar_newUser.setText("Cancelar");
+        Cancelar_newUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Cancelar_newUserActionPerformed(evt);
             }
         });
 
@@ -76,38 +76,39 @@ public class New_User extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jButton2))
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Nombre_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(Acceptar_newUser)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cancelar_newUser))
+                        .addComponent(Contraseña_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Correo_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(Nombre_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addComponent(Correo_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(Contraseña_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(Acceptar_newUser)
+                    .addComponent(Cancelar_newUser))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jTextField1.getAccessibleContext().setAccessibleName("Nombre_newUser");
-        jTextField2.getAccessibleContext().setAccessibleName("Correo_newUser");
-        jPasswordField1.getAccessibleContext().setAccessibleName("Contraseña_newUser");
-        jButton1.getAccessibleContext().setAccessibleName("Acceptar_newUser");
-        jButton2.getAccessibleContext().setAccessibleName("Cancelar_newUser");
+        Nombre_newUser.getAccessibleContext().setAccessibleName("Nombre_newUser");
+        Correo_newUser.getAccessibleContext().setAccessibleName("Correo_newUser");
+        Contraseña_newUser.getAccessibleContext().setAccessibleName("Contraseña_newUser");
+        Acceptar_newUser.getAccessibleContext().setAccessibleName("Acceptar_newUser");
+        Cancelar_newUser.getAccessibleContext().setAccessibleName("Cancelar_newUser");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,25 +124,25 @@ public class New_User extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Nombre_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nombre_newUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Nombre_newUserActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void Correo_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Correo_newUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_Correo_newUserActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void Contraseña_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_newUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_Contraseña_newUserActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void Acceptar_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptar_newUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_Acceptar_newUserActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void Cancelar_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar_newUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_Cancelar_newUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,11 +187,11 @@ public class New_User extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton Acceptar_newUser;
+    private javax.swing.JButton Cancelar_newUser;
+    private javax.swing.JPasswordField Contraseña_newUser;
+    private javax.swing.JTextField Correo_newUser;
+    private javax.swing.JTextField Nombre_newUser;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
