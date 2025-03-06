@@ -17,6 +17,26 @@
             <version>1.0</version>
         </dependency>
         <dependency>
+            <groupId>org.netbeans</groupId>
+            <artifactId>org-openide-modules</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans</groupId>
+            <artifactId>org-openide-util</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans</groupId>
+            <artifactId>org-openide-util-ui</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans</groupId>
+            <artifactId>org-openide-util-lookup</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>ValidationAPI</artifactId>
             <version>RELEASE180</version>

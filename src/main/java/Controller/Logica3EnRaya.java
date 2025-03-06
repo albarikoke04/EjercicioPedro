@@ -1,3 +1,5 @@
+package Controller;
+
 public class Logica3EnRaya {
     private static final char[][] tablero = new char[3][3];
     private static char jugadorActual = 'X';
