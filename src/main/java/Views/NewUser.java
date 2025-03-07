@@ -4,18 +4,43 @@
  */
 package Views;
 
+import Controller.Controller;
+import Controller.Database;
+import java.sql.SQLException;
+import java.util.Locale;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
+
 /**
  *
  * @author albay
  */
 public class NewUser extends javax.swing.JDialog {
 
-    /**
-     * Creates new form New_User
-     */
+    Controller c = Controller.getController();
+    Database d = Database.getDatabase();
+
     public NewUser(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        NUEmail.setName("E-Mail");
+        NUUser.setName("Username");
+        NUPass1.setName("First Password");
+        NUPass2.setName("Second Password");
+        ValidationGroup vg = NUValidationPanel.getValidationGroup();
+        vg.add(NUEmail, StringValidators.EMAIL_ADDRESS);
+        vg.add(NUEmail, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        vg.add(NUUser, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        vg.add(NUUser, StringValidators.minLength(4));
+        vg.add(NUUser, StringValidators.maxLength(12));
+        vg.add(NUPass1, StringValidators.minLength(8));
+        vg.add(NUPass1, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        vg.add(NUPass2, StringValidators.minLength(8));
+        vg.add(NUPass2, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        c.textFieldsBehaviour(NUUser, NUEmail);
     }
 
     /**
@@ -28,87 +53,97 @@ public class NewUser extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Nombre_newUser = new javax.swing.JTextField();
-        Correo_newUser = new javax.swing.JTextField();
-        Contraseña_newUser = new javax.swing.JPasswordField();
-        Acceptar_newUser = new javax.swing.JButton();
-        Cancelar_newUser = new javax.swing.JButton();
+        NUUser = new javax.swing.JTextField();
+        NUEmail = new javax.swing.JTextField();
+        NUAceptar = new javax.swing.JButton();
+        NUCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        NUValidationPanel = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        NUPass1 = new javax.swing.JTextField();
+        NUPass2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("New User");
+        setResizable(false);
 
-        Nombre_newUser.setText("Nombre");
-        Nombre_newUser.addActionListener(new java.awt.event.ActionListener() {
+        NUUser.setText("Usuario");
+
+        NUEmail.setText("E-Mail");
+
+        NUAceptar.setText("Aceptar");
+        NUAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Nombre_newUserActionPerformed(evt);
+                NUAceptarActionPerformed(evt);
             }
         });
 
-        Correo_newUser.setText("Correo");
-        Correo_newUser.addActionListener(new java.awt.event.ActionListener() {
+        NUCancelar.setText("Cancelar");
+        NUCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Correo_newUserActionPerformed(evt);
+                NUCancelarActionPerformed(evt);
             }
         });
 
-        Contraseña_newUser.setText("Contraseña");
-        Contraseña_newUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Contraseña_newUserActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("NUEVO USUARIO");
 
-        Acceptar_newUser.setText("Acceptar");
-        Acceptar_newUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Acceptar_newUserActionPerformed(evt);
-            }
-        });
+        NUPass1.setText("Contraseña");
 
-        Cancelar_newUser.setText("Cancelar");
-        Cancelar_newUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancelar_newUserActionPerformed(evt);
-            }
-        });
+        NUPass2.setText("Repetir Contraseña");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(NUValidationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nombre_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NUPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NUPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NUUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(Acceptar_newUser)
+                            .addComponent(NUAceptar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Cancelar_newUser))
-                        .addComponent(Contraseña_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Correo_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                            .addComponent(NUCancelar))
+                        .addComponent(NUEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(Nombre_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NUUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NUEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Correo_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(Contraseña_newUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(NUPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NUPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Acceptar_newUser)
-                    .addComponent(Cancelar_newUser))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(NUAceptar)
+                    .addComponent(NUCancelar))
+                .addGap(18, 18, 18)
+                .addComponent(NUValidationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        Nombre_newUser.getAccessibleContext().setAccessibleName("Nombre_newUser");
-        Correo_newUser.getAccessibleContext().setAccessibleName("Correo_newUser");
-        Contraseña_newUser.getAccessibleContext().setAccessibleName("Contraseña_newUser");
-        Acceptar_newUser.getAccessibleContext().setAccessibleName("Acceptar_newUser");
-        Cancelar_newUser.getAccessibleContext().setAccessibleName("Cancelar_newUser");
+        NUUser.getAccessibleContext().setAccessibleName("Nombre_newUser");
+        NUEmail.getAccessibleContext().setAccessibleName("Correo_newUser");
+        NUAceptar.getAccessibleContext().setAccessibleName("Acceptar_newUser");
+        NUCancelar.getAccessibleContext().setAccessibleName("Cancelar_newUser");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,25 +159,23 @@ public class NewUser extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Nombre_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nombre_newUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Nombre_newUserActionPerformed
+    private void NUAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUAceptarActionPerformed
+        if (NUPass1.getText().equals(NUPass2.getText())) {
+            try {
+                d.createUser(NUUser.getText(), NUEmail.getText(), NUPass1.getText());
+                JOptionPane.showMessageDialog(null, "El usuario " + NUUser.getText() + " ha sido registrado correctamente.", "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
+            }
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Las contraseñas deben coincidir!", "Not Valid Password", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_NUAceptarActionPerformed
 
-    private void Correo_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Correo_newUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Correo_newUserActionPerformed
-
-    private void Contraseña_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_newUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Contraseña_newUserActionPerformed
-
-    private void Acceptar_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptar_newUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Acceptar_newUserActionPerformed
-
-    private void Cancelar_newUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar_newUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cancelar_newUserActionPerformed
+    private void NUCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_NUCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,11 +221,14 @@ public class NewUser extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Acceptar_newUser;
-    private javax.swing.JButton Cancelar_newUser;
-    private javax.swing.JPasswordField Contraseña_newUser;
-    private javax.swing.JTextField Correo_newUser;
-    private javax.swing.JTextField Nombre_newUser;
+    private javax.swing.JButton NUAceptar;
+    private javax.swing.JButton NUCancelar;
+    private javax.swing.JTextField NUEmail;
+    private javax.swing.JTextField NUPass1;
+    private javax.swing.JTextField NUPass2;
+    private javax.swing.JTextField NUUser;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel NUValidationPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

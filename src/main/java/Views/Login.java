@@ -1,7 +1,9 @@
 package Views;
 
 import Controller.Controller;
-import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import Controller.Database;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import org.netbeans.validation.api.ui.ValidationGroup;
 
 /**
@@ -10,25 +12,20 @@ import org.netbeans.validation.api.ui.ValidationGroup;
  */
 public class Login extends javax.swing.JFrame {
 
+    ValidationGroup vg;
     Controller c = Controller.getController();
-        
+    Database d = Database.getDatabase();
+
     public Login() {
         initComponents();
-        emailTB.setName("E-Mail");
-        userTB.setName("UserName");
-        passPB.setName("Password");
-        ValidationGroup vg =  validationPanel1.getValidationGroup();
-        vg.add(emailTB, StringValidators.EMAIL_ADDRESS);
-        vg.add(emailTB, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        vg.add(userTB, StringValidators.REQUIRE_NON_EMPTY_STRING);
-        vg.add(userTB, StringValidators.minLength(4));
-        vg.add(userTB, StringValidators.maxLength(12));
-        vg.add(passPB, StringValidators.minLength(8));
         this.setLocationRelativeTo(null);
-        c.textFieldsBehaviour(userTB, emailTB);
+        c.textFieldsBehaviour(userTB, userTB);
     }
     
-    
+    public void clearFields() {
+        userTB.setText("Usuario");
+        passPB.setText("Contraseña");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,11 +36,11 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        emailTB = new javax.swing.JTextField();
         userTB = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
-        passPB = new javax.swing.JPasswordField();
         validationPanel1 = new org.netbeans.validation.api.ui.swing.ValidationPanel();
+        passPB = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -53,20 +50,29 @@ public class Login extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
-        emailTB.setText("E-Mail");
-
         userTB.setForeground(new java.awt.Color(153, 153, 153));
         userTB.setText("Usuario");
 
         loginButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         loginButton.setText("Log-In");
+        loginButton.setAlignmentX(0.5F);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
-        passPB.setText("Password");
+        passPB.setForeground(new java.awt.Color(153, 153, 153));
+        passPB.setText("Contraseña");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("¡Bienvenido!");
 
         jMenu1.setText("Alta");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jMenuItem1.setText("Crear Usuario");
+        jMenuItem1.setText("Crear Usuario...");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -82,32 +88,32 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(loginButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                    .addComponent(emailTB, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userTB, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passPB, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(validationPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(loginButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(userTB, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(passPB, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(emailTB, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userTB, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passPB, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(passPB, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(validationPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(validationPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
@@ -119,7 +125,20 @@ public class Login extends javax.swing.JFrame {
         nu.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        try {
+            if (d.userExists(userTB.getText(), passPB.getText())) {
+                c.saveUsername(userTB.getText());
+                MainMenu mm = new MainMenu(this, false);
+                mm.setVisible(true);
+                userTB.setText("Usuario");
+                passPB.setText("Contraseña");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "False Conection", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,12 +176,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField emailTB;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JPasswordField passPB;
+    private javax.swing.JTextField passPB;
     private javax.swing.JTextField userTB;
     private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanel1;
     // End of variables declaration//GEN-END:variables

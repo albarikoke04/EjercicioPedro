@@ -3,6 +3,8 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="New User"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -39,88 +41,88 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="NUValidationPanel" min="-2" pref="250" max="-2" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Nombre_newUser" min="-2" pref="187" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="Acceptar_newUser" min="-2" max="-2" attributes="0"/>
+                      <Component id="NUPass1" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="NUPass2" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="NUUser" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="NUAceptar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="Cancelar_newUser" min="-2" max="-2" attributes="0"/>
+                              <Component id="NUCancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="Contraseña_newUser" min="-2" pref="187" max="-2" attributes="0"/>
-                          <Component id="Correo_newUser" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
+                          <Component id="NUEmail" alignment="0" min="-2" pref="187" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
-                  <Component id="Nombre_newUser" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="NUUser" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="NUEmail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Correo_newUser" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="Contraseña_newUser" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="NUPass1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="NUPass2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Acceptar_newUser" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cancelar_newUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NUAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NUCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="NUValidationPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="Nombre_newUser">
+        <Component class="javax.swing.JTextField" name="NUUser">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre"/>
+            <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Nombre_newUser"/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Nombre_newUserActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="Correo_newUser">
+        <Component class="javax.swing.JTextField" name="NUEmail">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Correo"/>
+            <Property name="text" type="java.lang.String" value="E-Mail"/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Correo_newUser"/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Correo_newUserActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="Contrase&#xf1;a_newUser">
+        <Component class="javax.swing.JButton" name="NUAceptar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
-          </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Contrase&#xf1;a_newUser"/>
-          </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Contrase&#xf1;a_newUserActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="Acceptar_newUser">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Acceptar"/>
+            <Property name="text" type="java.lang.String" value="Aceptar"/>
           </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Acceptar_newUser"/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Acceptar_newUserActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NUAceptarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Cancelar_newUser">
+        <Component class="javax.swing.JButton" name="NUCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
@@ -128,8 +130,29 @@
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Cancelar_newUser"/>
           </AccessibilityProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Cancelar_newUserActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NUCancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="NUEVO USUARIO"/>
+          </Properties>
+        </Component>
+        <Component class="org.netbeans.validation.api.ui.swing.ValidationPanel" name="NUValidationPanel">
+        </Component>
+        <Component class="javax.swing.JTextField" name="NUPass1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="NUPass2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Repetir Contrase&#xf1;a"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

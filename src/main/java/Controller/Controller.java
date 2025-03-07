@@ -1,5 +1,6 @@
 package Controller;
 
+import Views.Login;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -12,6 +13,7 @@ import javax.swing.JTextField;
 public class Controller {
     
     private static Controller instance;
+    private static String username;
     
     private Controller() { }
     
@@ -23,6 +25,7 @@ public class Controller {
     }
     
     public void textFieldsBehaviour(JTextField userTB, JTextField emailTB) {
+        userTB.setForeground(Color.GRAY);
         userTB.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
                 if (userTB.getText().equals("Usuario")) {
@@ -39,6 +42,7 @@ public class Controller {
             }
         });
         
+        emailTB.setForeground(Color.GRAY);
         emailTB.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
                 if (emailTB.getText().equals("E-Mail")) {
@@ -55,4 +59,13 @@ public class Controller {
             }
         });
     }
+    
+    public void saveUsername(String username) {
+        this.username = username;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+    
 }
