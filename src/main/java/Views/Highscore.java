@@ -1,10 +1,8 @@
 package Views;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
-
+import Controller.ScoreTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -12,12 +10,26 @@ package Views;
  */
 public class Highscore extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Highscore
-     */
+    ScoreTableModel sc = new ScoreTableModel();
+
     public Highscore(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
+        ScoreTable.setModel(sc);
+        CBSort.removeAllItems();
+        CBSort.addItem("Usuario");
+        CBSort.addItem("Victorias");
+        CBSort.addItem("Partidas Jugadas");
+        CBSort.addItem("Porcentaje");
+        
+        CBSort.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int seleccion = CBSort.getSelectedIndex();
+                sc.ordenarDatos(seleccion);
+            }
+        });
     }
 
     /**
@@ -31,15 +43,16 @@ public class Highscore extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_highscore = new javax.swing.JTable();
-        Buscar_usuario = new javax.swing.JButton();
-        Atrás = new javax.swing.JButton();
+        ScoreTable = new javax.swing.JTable();
+        BBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        CBSort = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Tabla_highscore.setBackground(new java.awt.Color(255, 153, 153));
-        Tabla_highscore.setForeground(new java.awt.Color(255, 153, 153));
-        Tabla_highscore.setModel(new javax.swing.table.DefaultTableModel(
+        ScoreTable.setBackground(new java.awt.Color(255, 255, 255));
+        ScoreTable.setForeground(new java.awt.Color(0, 0, 0));
+        ScoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,47 +71,47 @@ public class Highscore extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        Tabla_highscore.setSelectionBackground(new java.awt.Color(255, 0, 255));
-        Tabla_highscore.setSelectionForeground(new java.awt.Color(255, 0, 102));
-        jScrollPane1.setViewportView(Tabla_highscore);
-        Tabla_highscore.getAccessibleContext().setAccessibleName("Tabla_highscore");
+        ScoreTable.setSelectionBackground(new java.awt.Color(153, 255, 255));
+        ScoreTable.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(ScoreTable);
+        ScoreTable.getAccessibleContext().setAccessibleName("Tabla_highscore");
 
-        Buscar_usuario.setText("Buscar");
-
-        Atrás.setText("Atrás");
-        Atrás.addActionListener(new java.awt.event.ActionListener() {
+        BBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BBack.setText("Volver");
+        BBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrásActionPerformed(evt);
+                BBackActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Ordenar por:");
+
+        CBSort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Atrás)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Buscar_usuario))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+            .addComponent(BBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(CBSort, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar_usuario)
-                    .addComponent(Atrás))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(CBSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(BBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        Buscar_usuario.getAccessibleContext().setAccessibleName("Buscar_usuario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,9 +127,9 @@ public class Highscore extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AtrásActionPerformed
+    private void BBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBackActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,9 +174,10 @@ public class Highscore extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Atrás;
-    private javax.swing.JButton Buscar_usuario;
-    private javax.swing.JTable Tabla_highscore;
+    private javax.swing.JButton BBack;
+    private javax.swing.JComboBox<String> CBSort;
+    private javax.swing.JTable ScoreTable;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

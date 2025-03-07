@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,10 +37,25 @@ public class Database {
         c.close();
     }
 
-    public boolean userExists(String username, String password) throws SQLException {
+    public boolean userPassExists(String username, String password) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
         String query = "select * from users where username = '" + username + "' and password = '" + password + "';";
+        ResultSet rs = st.executeQuery(query);
+        boolean exists = false;
+        if (rs.next()) {
+            exists = true;
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return exists;
+    }
+    
+    public boolean userExists(String username) throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from users where username = '" + username + "';";
         ResultSet rs = st.executeQuery(query);
         boolean exists = false;
         if (rs.next()) {
@@ -86,4 +102,30 @@ public class Database {
         st.close();
         desconectar(c);
     }
+    
+    public ArrayList<String[]> getHighscore() throws SQLException {
+        ArrayList<String[]> result = new ArrayList<>();
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from score;";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            String username = rs.getString("user");
+            int wins = rs.getInt("wins");
+            int plays = rs.getInt("plays");
+            float percentage = wins*100/plays;
+            String[] row = new String[4];
+            row[0] = username;
+            row[1] = String.valueOf(wins);
+            row[2] = String.valueOf(plays);
+            row[3] = String.valueOf(percentage);
+            
+            result.add(row);
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return result;
+    }
+    
 }

@@ -1,6 +1,9 @@
 package Views;
 
 import Controller.Controller;
+import Controller.Database;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,7 +12,8 @@ import Controller.Controller;
 public class MainMenu extends javax.swing.JDialog {
 
     Controller c = Controller.getController();
-    
+    Database d = Database.getDatabase();
+
     public MainMenu(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -42,8 +46,18 @@ public class MainMenu extends javax.swing.JDialog {
         setResizable(false);
 
         MMHighscore.setText("Puntuaciones");
+        MMHighscore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MMHighscoreActionPerformed(evt);
+            }
+        });
 
         MMSettings.setText("Opciones");
+        MMSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MMSettingsActionPerformed(evt);
+            }
+        });
 
         MMClose.setText("Cerrar Sesión");
         MMClose.addActionListener(new java.awt.event.ActionListener() {
@@ -68,14 +82,14 @@ public class MainMenu extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(MMPlay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(MMHighscore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MMHighscore, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
             .addComponent(MMSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(MMLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(MMClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(MMDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+            .addComponent(MMDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,10 +103,10 @@ public class MainMenu extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(MMSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(MMClose, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(MMDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(MMClose, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,14 +132,31 @@ public class MainMenu extends javax.swing.JDialog {
     private void MMDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMDeleteActionPerformed
         DeleteUser du = new DeleteUser(null, true);
         du.setVisible(true);
-        this.dispose();
+        try {
+            if (!d.userExists(c.getUsername())) {
+                this.dispose();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
+
+        };
     }//GEN-LAST:event_MMDeleteActionPerformed
+
+    private void MMSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMSettingsActionPerformed
+        Settings s = new Settings(null, false);
+        s.setVisible(true);
+    }//GEN-LAST:event_MMSettingsActionPerformed
+
+    private void MMHighscoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMHighscoreActionPerformed
+        Highscore h = new Highscore(null, false);
+        h.setVisible(true);
+    }//GEN-LAST:event_MMHighscoreActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 MainMenu dialog = new MainMenu(new javax.swing.JFrame(), true);

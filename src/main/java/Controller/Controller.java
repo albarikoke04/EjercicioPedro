@@ -4,6 +4,8 @@ import Views.Login;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JTextField;
 
 /**
@@ -11,19 +13,20 @@ import javax.swing.JTextField;
  * @author Veikr
  */
 public class Controller {
-    
+
     private static Controller instance;
     private static String username;
-    
-    private Controller() { }
-    
+
+    private Controller() {
+    }
+
     public static Controller getController() {
         if (instance == null) {
             instance = new Controller();
         }
         return instance;
     }
-    
+
     public void textFieldsBehaviour(JTextField userTB, JTextField emailTB) {
         userTB.setForeground(Color.GRAY);
         userTB.addFocusListener(new FocusAdapter() {
@@ -41,7 +44,7 @@ public class Controller {
                 }
             }
         });
-        
+
         emailTB.setForeground(Color.GRAY);
         emailTB.addFocusListener(new FocusAdapter() {
             public void focusGained(FocusEvent e) {
@@ -59,13 +62,19 @@ public class Controller {
             }
         });
     }
-    
+
     public void saveUsername(String username) {
         this.username = username;
     }
-    
+
     public String getUsername() {
         return username;
     }
     
+    public void selectLanguage(String idioma) {
+        Locale.setDefault(new Locale(idioma));
+        ResourceBundle bundle = ResourceBundle.getBundle(
+                "org.netbeans.validation.api.builtin.stringvalidation.Bundle"
+        );
+    }
 }

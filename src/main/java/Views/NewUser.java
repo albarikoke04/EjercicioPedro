@@ -162,12 +162,16 @@ public class NewUser extends javax.swing.JDialog {
     private void NUAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NUAceptarActionPerformed
         if (NUPass1.getText().equals(NUPass2.getText())) {
             try {
-                d.createUser(NUUser.getText(), NUEmail.getText(), NUPass1.getText());
-                JOptionPane.showMessageDialog(null, "El usuario " + NUUser.getText() + " ha sido registrado correctamente.", "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+                if (!d.userExists(NUUser.getText())) {
+                    d.createUser(NUUser.getText(), NUEmail.getText(), NUPass1.getText());
+                    JOptionPane.showMessageDialog(null, "El usuario " + NUUser.getText() + " ha sido registrado correctamente.", "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe un usuario registrado.", "Usuario Existe", JOptionPane.INFORMATION_MESSAGE);
+                }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
+                this.dispose();
             }
-            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "¡Las contraseñas deben coincidir!", "Not Valid Password", JOptionPane.ERROR_MESSAGE);
         }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package Views;
 
 import Controller.Controller;
@@ -150,7 +146,7 @@ public class DeleteUser extends javax.swing.JDialog {
 
     private void Acceptar_BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Acceptar_BorrarActionPerformed
         try {
-            if (d.userExists(UserTB.getText(), PassTB.getText()) && d.getEmail(UserTB.getText(), PassTB.getText()).equals(EmailTB.getText())) {
+            if (d.userPassExists(UserTB.getText(), PassTB.getText()) && d.getEmail(UserTB.getText(), PassTB.getText()).equals(EmailTB.getText())) {
                 d.deleteUser(UserTB.getText(), PassTB.getText());
                 JOptionPane.showMessageDialog(null, "Usuario " + UserTB.getText() + " ha sido eliminado del registro.", "Usuario Borrado", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
