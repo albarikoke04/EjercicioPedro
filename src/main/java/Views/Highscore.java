@@ -53,6 +53,7 @@ public class Highscore extends javax.swing.JDialog {
         UserFilterTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("HighScore");
 
         ScoreTable.setBackground(new java.awt.Color(255, 255, 255));
         ScoreTable.setForeground(new java.awt.Color(0, 0, 0));

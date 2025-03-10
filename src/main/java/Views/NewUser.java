@@ -165,6 +165,7 @@ public class NewUser extends javax.swing.JDialog {
                 if (!d.userExists(NUUser.getText())) {
                     d.createUser(NUUser.getText(), NUEmail.getText(), NUPass1.getText());
                     JOptionPane.showMessageDialog(null, "El usuario " + NUUser.getText() + " ha sido registrado correctamente.", "Usuario Registrado", JOptionPane.INFORMATION_MESSAGE);
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya existe un usuario registrado.", "Usuario Existe", JOptionPane.INFORMATION_MESSAGE);
                 }
