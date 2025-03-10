@@ -5,7 +5,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +24,17 @@ public class ScoreTableModel extends AbstractTableModel {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public void setModel(String[] result) {
+        datos.clear();
+        datos.add(result);
+        fireTableDataChanged();
+    }
+    
+    public void reboot() throws SQLException {
+        datos = d.getHighscore();
+        fireTableDataChanged();
     }
 
     @Override

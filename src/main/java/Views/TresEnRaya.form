@@ -39,39 +39,34 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Casila_20" pref="134" max="32767" attributes="0"/>
-                              <Component id="Casila_10" max="32767" attributes="0"/>
-                              <Component id="Casila_00" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="Casila_11" min="-2" pref="132" max="-2" attributes="0"/>
-                              <Component id="Casila_21" min="-2" pref="132" max="-2" attributes="0"/>
-                              <Component id="Casila_01" min="-2" pref="132" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Casila_12" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="Casila_02" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Component id="Casila_22" min="-2" pref="133" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="105" max="32767" attributes="0"/>
-                      </Group>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="Casila_20" pref="134" max="32767" attributes="0"/>
+                      <Component id="Casila_10" max="32767" attributes="0"/>
+                      <Component id="Casila_00" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="Casila_11" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Component id="Casila_21" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Component id="Casila_01" min="-2" pref="132" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="Casila_12" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="Casila_02" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="Casila_22" min="-2" pref="133" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="111" max="32767" attributes="0"/>
               </Group>
+              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="131" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="Casila_00" pref="119" max="32767" attributes="0"/>
                       <Component id="Casila_01" max="32767" attributes="0"/>
@@ -114,9 +109,6 @@
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Casila_01"/>
           </AccessibilityProperties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Casila_01ActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Casila_11">
           <AccessibilityProperties>
@@ -144,10 +136,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="Turno_Jugador">
+            <Component class="javax.swing.JTextArea" name="jugadorTF">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="40" style="1"/>
+                </Property>
+                <Property name="rows" type="int" value="1"/>
+                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

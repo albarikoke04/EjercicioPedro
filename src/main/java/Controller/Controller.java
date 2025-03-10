@@ -1,6 +1,5 @@
 package Controller;
 
-import Views.Login;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -72,9 +71,9 @@ public class Controller {
     }
     
     public void selectLanguage(String idioma) {
-        Locale.setDefault(new Locale(idioma));
         ResourceBundle bundle = ResourceBundle.getBundle(
                 "org.netbeans.validation.api.builtin.stringvalidation.Bundle"
         );
+        Locale.setDefault(new Locale(idioma));
     }
 }

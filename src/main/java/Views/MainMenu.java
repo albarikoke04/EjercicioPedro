@@ -67,6 +67,11 @@ public class MainMenu extends javax.swing.JDialog {
         });
 
         MMPlay.setText("Jugar");
+        MMPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MMPlayActionPerformed(evt);
+            }
+        });
 
         MMLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
@@ -151,6 +156,11 @@ public class MainMenu extends javax.swing.JDialog {
         Highscore h = new Highscore(null, false);
         h.setVisible(true);
     }//GEN-LAST:event_MMHighscoreActionPerformed
+
+    private void MMPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MMPlayActionPerformed
+        TresEnRaya tr = new TresEnRaya(null, true);
+        tr.setVisible(true);
+    }//GEN-LAST:event_MMPlayActionPerformed
 
     /**
      * @param args the command line arguments

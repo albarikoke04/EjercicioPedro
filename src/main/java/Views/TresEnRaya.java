@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package Views;
+
+import Controller.Controller;
+import Controller.Database;
+import Controller.Logica3EnRaya;
+import java.sql.SQLException;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,12 +13,92 @@ package Views;
  */
 public class TresEnRaya extends javax.swing.JDialog {
 
-    /**
-     * Creates new form TresEnRalla
-     */
+    Database d = Database.getDatabase();
+    Controller c = Controller.getController();
+
+    private JButton[][] botones;
+
     public TresEnRaya(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        inicializarJuego();
+    }
+
+    private void inicializarJuego() {
+        Logica3EnRaya.inicializarTablero();
+        actualizarTurno();
+        botones = new JButton[][]{
+            {Casila_00, Casila_01, Casila_02},
+            {Casila_10, Casila_11, Casila_12},
+            {Casila_20, Casila_21, Casila_22}
+        };
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                final int fila = i;
+                final int columna = j;
+                botones[i][j].addActionListener(e -> realizarMovimiento(fila, columna));
+            }
+        }
+    }
+
+    private void realizarMovimiento(int fila, int columna) {
+        if (Logica3EnRaya.movimientoValido(fila, columna)) {
+            Logica3EnRaya.hacerMovimiento(fila, columna);
+            botones[fila][columna].setText(String.valueOf(Logica3EnRaya.getJugadorActual()));
+            verificarJuego();
+        }
+    }
+
+    private void verificarJuego() {
+        if (Logica3EnRaya.hayGanador()) {
+            JOptionPane.showMessageDialog(this, "¡El jugador " + Logica3EnRaya.getJugadorActual() + " ha ganado!");
+            try {
+                if (Logica3EnRaya.getJugadorActual() == 'X') {
+                    d.addWin(c.getUsername());
+                }
+                d.addGame(c.getUsername());
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
+            }
+            reiniciarJuego();
+        } else if (Logica3EnRaya.esEmpate()) {
+            JOptionPane.showMessageDialog(this, "¡Empate!");
+            try {
+                d.addGame(c.getUsername());
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "False Connection", JOptionPane.ERROR_MESSAGE);
+            }
+            reiniciarJuego();
+        } else {
+            Logica3EnRaya.cambiarTurno();
+            actualizarTurno();
+            if (Logica3EnRaya.getJugadorActual() == 'O') {
+                Logica3EnRaya.hacerMovimientoCPU(botones);
+                verificarJuego();
+            }
+        }
+    }
+
+    private void actualizarTurno() {
+        jugadorTF.setText("Turno de: " + Logica3EnRaya.getJugadorActual());
+    }
+
+    private void reiniciarJuego() {
+        Logica3EnRaya.inicializarTablero();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                botones[i][j].setText("");
+            }
+        }
+        actualizarTurno();
+    }
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> {
+            TresEnRaya dialog = new TresEnRaya(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+        });
     }
 
     /**
@@ -38,51 +121,45 @@ public class TresEnRaya extends javax.swing.JDialog {
         Casila_12 = new javax.swing.JButton();
         Casila_22 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Turno_Jugador = new javax.swing.JTextArea();
+        jugadorTF = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Casila_01.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Casila_01ActionPerformed(evt);
-            }
-        });
-
-        Turno_Jugador.setColumns(20);
-        Turno_Jugador.setRows(5);
-        jScrollPane1.setViewportView(Turno_Jugador);
+        jugadorTF.setColumns(20);
+        jugadorTF.setFont(new java.awt.Font("Segoe UI", 1, 40)); // NOI18N
+        jugadorTF.setRows(1);
+        jugadorTF.setEnabled(false);
+        jugadorTF.setFocusable(false);
+        jScrollPane1.setViewportView(jugadorTF);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Casila_20, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(Casila_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Casila_00, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Casila_20, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(Casila_10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Casila_00, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Casila_11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Casila_21, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Casila_01, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(88, 88, 88)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Casila_12, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Casila_02, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Casila_22, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 105, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(Casila_11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Casila_21, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Casila_01, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Casila_12, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Casila_02, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Casila_22, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(111, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(Casila_00, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                     .addComponent(Casila_01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -122,52 +199,6 @@ public class TresEnRaya extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Casila_01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Casila_01ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Casila_01ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TresEnRaya.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TresEnRaya.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TresEnRaya.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TresEnRaya.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                TresEnRaya dialog = new TresEnRaya(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Casila_00;
@@ -179,8 +210,8 @@ public class TresEnRaya extends javax.swing.JDialog {
     private javax.swing.JButton Casila_20;
     private javax.swing.JButton Casila_21;
     private javax.swing.JButton Casila_22;
-    private javax.swing.JTextArea Turno_Jugador;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jugadorTF;
     // End of variables declaration//GEN-END:variables
 }

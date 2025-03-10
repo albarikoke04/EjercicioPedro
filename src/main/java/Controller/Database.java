@@ -13,18 +13,19 @@ import java.util.ArrayList;
  * @author loren
  */
 public class Database {
-    
+
     private static Database instance;
-    
-    private Database() { }
-    
+
+    private Database() {
+    }
+
     public static Database getDatabase() {
         if (instance == null) {
             instance = new Database();
         }
         return instance;
     }
-    
+
     private Connection conectar() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/javaGame";
         String user = "veikr";
@@ -51,7 +52,7 @@ public class Database {
         desconectar(c);
         return exists;
     }
-    
+
     public boolean userExists(String username) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -69,7 +70,7 @@ public class Database {
 
     public void createUser(String userName, String email, String password) throws SQLException {
         Connection c = conectar();
-        PreparedStatement ps = c.prepareStatement("insert into users (username,password,email,wins,loses) values (?,?,?,0,0);");
+        PreparedStatement ps = c.prepareStatement("insert into users (username,password,email) values (?,?,?);");
         ps.setString(1, userName);
         ps.setString(2, password);
         ps.setString(3, email);
@@ -77,7 +78,7 @@ public class Database {
         ps.close();
         desconectar(c);
     }
-    
+
     public String getEmail(String username, String password) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -92,7 +93,7 @@ public class Database {
         desconectar(c);
         return email;
     }
-    
+
     public void deleteUser(String username, String password) throws SQLException {
         Connection c = conectar();
         Statement st = c.createStatement();
@@ -102,7 +103,7 @@ public class Database {
         st.close();
         desconectar(c);
     }
-    
+
     public ArrayList<String[]> getHighscore() throws SQLException {
         ArrayList<String[]> result = new ArrayList<>();
         Connection c = conectar();
@@ -113,13 +114,13 @@ public class Database {
             String username = rs.getString("user");
             int wins = rs.getInt("wins");
             int plays = rs.getInt("plays");
-            float percentage = wins*100/plays;
+            float percentage = wins * 100 / plays;
             String[] row = new String[4];
             row[0] = username;
             row[1] = String.valueOf(wins);
             row[2] = String.valueOf(plays);
             row[3] = String.valueOf(percentage);
-            
+
             result.add(row);
         }
         rs.close();
@@ -127,5 +128,73 @@ public class Database {
         desconectar(c);
         return result;
     }
+
+    public boolean scoreExists(String username) throws SQLException {
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from score where user = '" + username + "';";
+        ResultSet rs = st.executeQuery(query);
+        boolean exists = false;
+        if (rs.next()) {
+            exists = true;
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return exists;
+    }
     
+    public String[] getScoreUser(String userName) throws SQLException {
+        String[] result = new String[4];
+        Connection c = conectar();
+        Statement st = c.createStatement();
+        String query = "select * from score where user like '%" + userName + "%';";
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {
+            String username = rs.getString("user");
+            int wins = rs.getInt("wins");
+            int plays = rs.getInt("plays");
+            float percentage = wins * 100 / plays;
+            result[0] = username;
+            result[1] = String.valueOf(wins);
+            result[2] = String.valueOf(plays);
+            result[3] = String.valueOf(percentage);
+        }
+        rs.close();
+        st.close();
+        desconectar(c);
+        return result;
+    }
+
+    public void createScore(String userName) throws SQLException {
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("insert into score (user, wins, plays) values (?, 0, 0);");
+        ps.setString(1, userName);
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+
+    public void addWin(String userName) throws SQLException {
+        if (!scoreExists(userName)) {
+            createScore(userName);
+        }
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("update score set wins = wins + 1 where user = '" + userName + "';");
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+
+    public void addGame(String userName) throws SQLException {
+        if (!scoreExists(userName)) {
+            createScore(userName);
+        }
+        Connection c = conectar();
+        PreparedStatement ps = c.prepareStatement("update score set plays = plays + 1 where user = '" + userName + "';");
+        ps.executeUpdate();
+        ps.close();
+        desconectar(c);
+    }
+
 }

@@ -1,8 +1,6 @@
 package javagame;
 
 import Views.Login;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  *
